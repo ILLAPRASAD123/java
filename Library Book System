@@ -1,0 +1,52 @@
+package project;
+import java.util.Scanner;
+public class Librarybookissuesystem {
+	    private String[] books = {"Java Basics", "Data Structures", "Algorithms", "Design Patterns"};
+	    private boolean[] issued = new boolean[books.length];
+	    public void displayAvailableBooks() {
+	        System.out.println("Available Books:");
+	        for (int i = 0; i < books.length; i++) {
+	            if (!issued[i]) {
+	                System.out.println(books[i]);
+	            }
+	        }
+	    }
+	    public void issueBook(String bookName) {
+	        for (int i = 0; i < books.length; i++) {
+	            if (books[i].equals(bookName) && !issued[i]) {
+	                issued[i] = true;
+	                System.out.println(bookName + " has been issued.");
+	                return;
+	            }
+	        }
+	        System.out.println("Book not available for issuing.");
+	    }
+	    public void searchBook(String bookName) {
+	        for (String book : books) {
+	            if (book.equals(bookName)) {
+	                System.out.println(bookName + " is available.");
+	                return;
+	            }
+	        }
+	        System.out.println(bookName + " not found.");
+	    }
+	    public void showUnavailableBooks() {
+	        System.out.println("Unavailable Books:");
+	        for (int i = 0; i < books.length; i++) {
+	            if (issued[i]) {
+	                System.out.println(books[i]);
+	            }
+	        }
+	    }
+
+	    public static void main(String[] args) {
+	    	Librarybookissuesystem library = new Librarybookissuesystem();
+	        Scanner scanner = new Scanner(System.in);
+	        library.displayAvailableBooks();
+	        library.issueBook("Java Basics");
+	        library.searchBook("Data Structures");
+	        library.showUnavailableBooks();
+	        
+	        scanner.close();
+	    }
+	}
