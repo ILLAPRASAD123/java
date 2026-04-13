@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+struct Booking {
+    char name[50];
+    int age;
+    char source[30];
+    char destination[30];
+    int tickets;
+    float fare;
+};
+float calculateFare(char source[], char destination[], int tickets) {
+    int baseFare = 20;
+    if (strcmp(source, destination) == 0) {
+        return 0;
+    }
+    return baseFare * tickets;
+}
+int main() {
+    struct Booking b;
+    printf("===== METRO TRAIN BOOKING SYSTEM =====\n");
+    printf("Enter Passenger Name: ");
+    scanf(" %[^\n]", b.name);
+    printf("Enter Age: ");
+    scanf("%d", &b.age);
+    printf("Enter Source Station: ");
+    scanf(" %[^\n]", b.source);
+    printf("Enter Destination Station: ");
+    scanf(" %[^\n]", b.destination);
+    printf("Enter Number of Tickets: ");
+    scanf("%d", &b.tickets);
+    b.fare = calculateFare(b.source, b.destination, b.tickets);
+    printf("\n===== BOOKING DETAILS =====\n");
+    printf("Name: %s\n", b.name);
+    printf("Age: %d\n", b.age);
+    printf("From: %s\n", b.source);
+    printf("To: %s\n", b.destination);
+    printf("Tickets: %d\n", b.tickets);
+    printf("Total Fare: ₹%.2f\n", b.fare);
+    printf("\nBooking Successful!\n");
+    return 0;
+}
